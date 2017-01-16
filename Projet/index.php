@@ -3,8 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>form</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
   </head>
   <body>
+  <div class="container">
     <header class="header">Analyse Multicritères -SkyRankHotel</header>
     <form class="daForm" action="formthing.php" method="post">
       <label for="poids">Poids</label> <input name="poids" required="" />
@@ -13,22 +17,25 @@
     <table id="formResult">
       <tr>
         <thead>
-          IdH
+        IdH
         </thead>
         <thead>
-          Prix
+        Prix
         </thead>
         <thead>
-          Distance
+        Distance
         </thead>
         <thead>
-          NbEt
+        NbEt
         </thead>
         <thead>
-          Score
+        Score
         </thead>
       </tr>
     </table>
+  </div>
 
+  <!--Scripts-->
+  <script src="js/bootstrap.min.js" type="text/javascript"></script>
   </body>
 </html>
