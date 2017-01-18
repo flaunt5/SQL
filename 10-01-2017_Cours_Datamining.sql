@@ -29,3 +29,22 @@ SELECT Hotel.IdH, Hotel.Prix, Hotel.NbEt, hotel_score.Score
 FROM Hotel, hotel_score
 WHERE Hotel.IdH = hotel_score.IdH
 ORDER BY hotel_score.Score DESC;
+
+ALTER VIEW hotel_sky AS SELECT IdH, Prix, Distance, NbEt
+                        FROM Hotel h1
+                        WHERE NOT EXISTS (SELECT * FROM Hotel h2
+                        WHERE h2.Prix <= h1.Prix AND h2.Distance <= h1.Distance AND h2.nbEt >= h1.nbEt
+                              AND ( h2.Prix < h1.Prix OR h2.Distance < h1.Distance OR h2.nbEt > h1.nbEt)
+                        );
+
+ALTER VIEW The_Prix AS SELECT MIN(Prix) The_Prix FROM hotel_sky;
+ALTER VIEW The_Distance AS SELECT MIN(Distance) The_Distance FROM hotel_sky;
+ALTER VIEW The_NbEt AS SELECT MAX(NbEt) The_NbEt FROM hotel_sky;
+
+ALTER VIEW hotel_norm AS SELECT IdH,
+                           The_Prix / Prix Prix_norm,
+                           The_Distance / Distance Distance_norm,
+                           NbEt/The_NbEt  NbEt_norm
+                         FROM hotel_sky, The_Prix, The_Distance, The_NbEt;
+
+SELECT * FROM hotel_norm;
