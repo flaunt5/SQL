@@ -9,7 +9,7 @@ ALTER VIEW Min_Prix AS SELECT MIN(Prix) Min_Prix FROM hotel_sky;
 ALTER VIEW Min_Distance AS SELECT MIN(Distance) Min_Distance FROM hotel_sky;
 ALTER VIEW Max_NbEt AS SELECT MAX(NbEt) Max_NbEt FROM hotel_sky;
 
-ALTER VIEW hotel_norm AS SELECT IdH,
+CREATE VIEW hotel_norm AS SELECT IdH,
 Min_Prix / Prix Prix_norm,
 Min_Distance / Distance Distance_norm,
 NbEt/Max_NbEt  NbEt_norm

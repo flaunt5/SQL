@@ -1,4 +1,6 @@
 <?php
+    require ("connexion.php");
+
     if(isset($_POST['poid_prix']) && isset($_POST['poid_distance']) && isset($_POST['poid_nbEt'])
         && isset($_POST['level_prix']) && isset($_POST['level_prix']) && isset($_POST['level_prix'])) {
 

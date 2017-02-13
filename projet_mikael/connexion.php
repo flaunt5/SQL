@@ -9,7 +9,7 @@
         $user = "root";
         $pass = "password";
 
-        $pdo = new PDO('mysql:host=localhost;dbname=tp_datamining', $user, $pass);
+        $pdo = new PDO('mysql:host=localhost;dbname=tryoout', $user, $pass);
         // Normaliser l'affichage des erreurs avec des constantes de la class PDO
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
