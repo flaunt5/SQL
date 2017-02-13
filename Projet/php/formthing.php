@@ -27,14 +27,14 @@
             }
         }
 
-        $theQuery = $database->prepare("SELECT * FROM hotel H1 WHERE NOT EXISTS
-                                            (SELECT  * FROM hotel H2
-                                                WHERE (H2.prix >= H1.prix
-                                                AND H2.Distance >= H1.Distance
-                                                AND H2.NbEt >= H1.NbEt)
-                                            AND (H2.prix > H1.prix
-                                            OR H2.distance > H1.distance
-                                            OR H2.NbEt > H1.nbet))");
+        $theQuery = $database->prepare("SELECT * FROM Hotel H1 WHERE NOT EXISTS
+                                            (SELECT  * FROM Hotel H2
+                                                WHERE (H2.Prix :operator1 H1.Prix
+                                                AND H2.Distance :operator2 H1.Distance
+                                                AND H2.NbEt :operator3 H1.NbEt)
+                                            AND (H2.Prix :operator4 H1.Prix
+                                            OR H2.Distance :operator5 H1.Distance
+                                            OR H2.NbEt :operator6 H1.NbEt))");
         $theQuery->execute(
                 array(
             ':operator1' => $tabOperator['prix'],
