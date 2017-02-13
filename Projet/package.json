@@ -1,8 +1,8 @@
 {
   "name": "datamining",
   "version": "1.0.0",
-  "description": "TP dataming",
-  "main": "js/indexnpm.js",
+  "description": "TP datamining",
+  "main": "js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
