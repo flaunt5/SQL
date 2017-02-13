@@ -5,9 +5,13 @@ WHERE NOT EXISTS (SELECT * FROM Hotel h2
 					AND ( h2.Prix < h1.Prix OR h2.Distance < h1.Distance OR h2.nbEt > h1.nbEt)
 				);
 
-ALTER VIEW Min_Prix AS SELECT MIN(Prix) Min_Prix FROM hotel_sky;
-ALTER VIEW Min_Distance AS SELECT MIN(Distance) Min_Distance FROM hotel_sky;
-ALTER VIEW Max_NbEt AS SELECT MAX(NbEt) Max_NbEt FROM hotel_sky;
+CREATE VIEW Min_Prix AS SELECT MIN(Prix) Min_Prix FROM hotel_sky;
+CREATE VIEW Min_Distance AS SELECT MIN(Distance) Min_Distance FROM hotel_sky;
+CREATE VIEW Max_NbEt AS SELECT MAX(NbEt) Max_NbEt FROM hotel_sky;
+
+CREATE VIEW Max_Prix AS SELECT MAX(Prix) Min_Prix FROM hotel_sky;
+CREATE VIEW Max_Distance AS SELECT MAX(Distance) Min_Distance FROM hotel_sky;
+CREATE VIEW Min_NbEt AS SELECT MIN(NbEt) Max_NbEt FROM hotel_sky;
 
 CREATE VIEW hotel_norm AS SELECT IdH,
 Min_Prix / Prix Prix_norm,
@@ -37,9 +41,9 @@ ALTER VIEW hotel_sky AS SELECT IdH, Prix, Distance, NbEt
                               AND ( h2.Prix < h1.Prix OR h2.Distance < h1.Distance OR h2.nbEt > h1.nbEt)
                         );
 
-ALTER VIEW The_Prix AS SELECT MIN(Prix) The_Prix FROM hotel_sky;
-ALTER VIEW The_Distance AS SELECT MIN(Distance) The_Distance FROM hotel_sky;
-ALTER VIEW The_NbEt AS SELECT MAX(NbEt) The_NbEt FROM hotel_sky;
+CREATE VIEW The_Prix AS SELECT MIN(Prix) The_Prix FROM hotel_sky;
+CREATE VIEW The_Distance AS SELECT MIN(Distance) The_Distance FROM hotel_sky;
+CREATE VIEW The_NbEt AS SELECT MAX(NbEt) The_NbEt FROM hotel_sky;
 
 ALTER VIEW hotel_norm AS SELECT IdH,
                            The_Prix / Prix Prix_norm,
@@ -48,3 +52,4 @@ ALTER VIEW hotel_norm AS SELECT IdH,
                          FROM hotel_sky, The_Prix, The_Distance, The_NbEt;
 
 SELECT * FROM hotel_norm;
+
