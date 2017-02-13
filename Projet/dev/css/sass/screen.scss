@@ -1,0 +1,27 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "bootstrap";
+@import "material/bootstrap-material-design";
+@import "material/ripples";
+@import "var/var";
+
+//google fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin-ext');
+
+body {
+  font-family: 'Open Sans', sans-serif!important;
+  background-color: #bdc3c7;
+  #content {
+    background: #fff;
+    @include card(1);
+
+    thead.result {
+      font-weight: bold;
+      font-size: 120%;
+    }
+  }
+}

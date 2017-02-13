@@ -1,0 +1,27 @@
+{
+  "name": "datamining",
+  "version": "1.0.0",
+  "description": "TP dataming",
+  "main": "js/indexnpm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flaunt5/SQL.git"
+  },
+  "author": "Joris Brandt",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/flaunt5/SQL/issues"
+  },
+  "homepage": "https://github.com/flaunt5/SQL#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jquery": "^3.1.1",
+    "tether": "^1.4.0"
+  }
+}
