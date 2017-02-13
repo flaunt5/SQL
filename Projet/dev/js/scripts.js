@@ -23,15 +23,15 @@ $("#form").validate({
     rules : {
         prix : {
             required : true,
-            range : [1, 10]
+            range : [1, 100]
         },
         distance : {
             required : true,
-            range : [1, 10]
+            range : [1, 100]
         },
         etoiles : {
             required : true,
-            range : [1, 10]
+            range : [1, 100]
         },
         prix_max : {
             required: true
@@ -57,6 +57,7 @@ $("#form").on("submit", function (e) {
     e.preventDefault();
 
     var url = $("#form").attr('action'),
+        method = $("#form").attr('method'),
         prix = $("#prix").val(),
         distance = $("#distance").val(),
         etoiles =  $("#etoiles").val(),
@@ -66,7 +67,8 @@ $("#form").on("submit", function (e) {
 
     $.ajax({
         url : url,
-        type : 'POST',
+        type : method,
+        headers : { 'Access-Control-Allow-Origin' : '*'},
         data : {
             prix : prix ,
             distance : distance,

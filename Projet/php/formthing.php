@@ -1,6 +1,6 @@
 <?php
 
-    $database = new PDO('mysql:host=localhost;dbname=tryoout;port=3306;charset=utf8', 'root', 'password');
+    $database = new PDO('mysql:host=localhost;dbname=tryoout;port=3306;charset=utf8', 'hotel', 'u4bh52dx');
 
     if(isset($_POST['prix']) && isset($_POST['distance']) && isset($_POST['etoiles'])
         && isset($_POST['prix_radio']) && isset($_POST['distance_radio']) && isset($_POST['etoiles_radio'])) :
@@ -29,22 +29,13 @@
 
         $theQuery = $database->prepare("SELECT * FROM Hotel H1 WHERE NOT EXISTS
                                             (SELECT  * FROM Hotel H2
-                                                WHERE (H2.Prix :operator1 H1.Prix
-                                                AND H2.Distance :operator2 H1.Distance
-                                                AND H2.NbEt :operator3 H1.NbEt)
-                                            AND (H2.Prix :operator4 H1.Prix
-                                            OR H2.Distance :operator5 H1.Distance
-                                            OR H2.NbEt :operator6 H1.NbEt))");
-        $theQuery->execute(
-                array(
-            ':operator1' => $tabOperator['prix'],
-            ':operator2' => $tabOperator['distance'],
-            ':operator3' => $tabOperator['etoiles'],
-            ':operator4' => substr($tabOperator['prix'], 0, 1),
-            ':operator5' => substr($tabOperator['distance'], 0, 1),
-            ':operator6' => substr($tabOperator['etoiles'], 0, 1)
-        )
-        );
+                                                WHERE (H2.Prix " . $tabOperator['prix'] . " H1.Prix
+                                                AND H2.Distance " . $tabOperator['distance'] . " H1.Distance
+                                                AND H2.NbEt " . $tabOperator['etoiles'] . " H1.NbEt)
+                                            AND (H2.Prix " . substr($tabOperator['prix'], 0, 1) . " H1.Prix
+                                            OR H2.Distance " . substr($tabOperator['distance'], 0, 1) . " H1.Distance
+                                            OR H2.NbEt " . substr($tabOperator['etoiles'], 0, 1) . " H1.NbEt))");
+        $theQuery->execute();
 
         while($row = $theQuery->fetch(PDO::FETCH_ASSOC)) {
             $result[] = $row;
